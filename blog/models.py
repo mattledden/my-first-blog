@@ -33,3 +33,17 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+class CV(models.Model):
+    name = models.CharField(max_length=35)
+    location = models.CharField(max_length=35)
+    age = models.CharField(max_length=3)
+    contact = models.TextField()
+    profile = models.TextField()
+    experience = models.TextField()
+    qualifications = models.TextField()
+    hobbies = models.TextField()
+    references = models.TextField()
+
+    def __str__(self):
+        return self.name
