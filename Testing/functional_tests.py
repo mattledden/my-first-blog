@@ -19,9 +19,13 @@ class NewVisitorTest(unittest.TestCase):
     def test_can_make_cv(self):
         # Edith has heard about a cool new online blog. She goes
         # to check out its homepage
-        self.browser.get('http://127.0.0.1:8000/accounts/login/?next=/cv/new')
+        self.browser.get('http://127.0.0.1:8000')
 
-        #She needs to login
+        #She needs to login so clicks the padlock button
+        inputbox = self.browser.find_element_by_id("id_login")
+        inputbox.send_keys(Keys.ENTER)
+
+        time.sleep(0.5)
         inputbox = self.browser.find_element_by_id('id_username')
         
         inputbox.send_keys('USERNAME')
@@ -32,9 +36,25 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys('PASSWORD') #I haven't put the actual password here as I don't want to upload it to GitHub!! 
         inputbox.send_keys(Keys.ENTER)
 
-        time.sleep(1)
+        time.sleep(0.5)
 
-        # She notices the page title and header mention a blog
+        #she sees a link called "CV" and clicks on it
+        inputbox = self.browser.find_element_by_id('id_cv')
+        inputbox.send_keys(Keys.ENTER)
+
+        time.sleep(0.5)
+
+        # She notices the page header mentions a cv
+        header_text = self.browser.find_element_by_id('id_name').text  
+        self.assertIn('CV', header_text)
+
+        #she sees a button for writing a new cv so she clicks it
+        inputbox = self.browser.find_element_by_id('id_new')
+        inputbox.send_keys(Keys.ENTER)
+
+        time.sleep(0.5)
+
+        # She notices the page title mentions a blog and the header mentions a CV
         self.assertIn('Blog', self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h2').text  
         self.assertIn('CV', header_text)
@@ -117,31 +137,31 @@ class NewVisitorTest(unittest.TestCase):
         # She types "on request"
         inputbox.send_keys('On request')
 
-        time.sleep(1)
-        
-        # When she hits tab she can fill in the next field
-        #inputbox.send_keys(Keys.TAB)
-
-        #time.sleep(1)
         inputbox = self.browser.find_element_by_id('id_submit')
-        time.sleep(1)
-        #when she hits enter the form is submitted and she is redirected to the page displaying her CV
-        inputbox.send_keys(Keys.ENTER)
 
-        time.sleep(2)
-        
+        #when she hits enter the form is submitted and she is redirected to the page displaying her CV
+        inputbox.send_keys(Keys.ENTER)  
+
+        time.sleep(0.5)
+
+        #she is redirected to a page displaying her CV
+        header_text = self.browser.find_element_by_id('id_name').text  
+        self.assertIn('Edith', header_text)
 
     '''def test_can_read_cv(self):
-        # Edith has heard about a cool new online blog. She goes
-        # to check out its homepage
-        self.browser.get('http://127.0.0.1:8000/cv')
+        # Edith has uploaded her cv to this website
+        self.browser.get('http://127.0.0.1:8000')
 
-        # She notices the page title and header mention a blog
-        self.assertIn('Blog', self.browser.title)
-        header_text = self.browser.find_element_by_tag_name('h1').text  
-        self.assertIn('CV', header_text)
+        #she sees a link called "CV" and clicks on it
+        inputbox = self.browser.find_element_by_id('id_cv')
+        inputbox.send_keys(Keys.ENTER)
 
-    def test_can_edit_cv(self):
+        time.sleep(0.5)
+        # She notices the page header mentions her name
+        header_text = self.browser.find_element_by_id('id_name').text  
+        self.assertIn('Edith', header_text)'''
+
+    '''def test_can_edit_cv(self):
         # Edith has heard about a cool new online blog. She goes
         # to check out its homepage
         self.browser.get('http://127.0.0.1:8000/cv/edit')

@@ -13,19 +13,16 @@ class CVListTest(TestCase):
 
     def test_returns_correct_html(self):
         response = self.client.get('/')
+        print(response)
         self.assertTemplateUsed(response, 'blog/post_list.html', 'blog/base.html')
-    
-    '''def test_cv_returns_correct_html(self):
-        response = self.client.get('/cv/')
-        self.assertTemplateUsed(response, 'cv/cv.html', 'blog/base.html')
 
-    def test_edit_cv_returns_correct_html(self):
+    '''def test_edit_cv_returns_correct_html(self):
         response = self.client.get('/cv/edit/')
         self.assertTemplateUsed(response, 'cv/cv_edit.html', 'blog/base.html')'''
 
     def test_new_cv_returns_correct_html(self):
-        response2 = self.client.get('/cv/new/')
-        self.assertTemplateUsed(response2, 'cv/cv_edit.html', 'blog/base.html')
+        response = self.client.get('/cv/new/')
+        self.assertTemplateUsed(response, 'cv/cv_edit.html', 'blog/base.html')
 
     def test_can_save_a_POST_request(self):
         self.client.post('/cv/new/', data={'name': 'Matt', 'location': 'a', 'age': '1', 'contact': 'a', 'profile': 'a', 'experience': 'a', 'qualifications': 'a', 'hobbies': 'a', 'references': 'a'})

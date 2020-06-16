@@ -2,8 +2,15 @@
 
 {% block content %}
     <div class="cv">
-        <h1>{{ cv.name }}'s CV</h1>
-        
+
+        <!--{% if cv.all.isEmpty()??-->
+
+        <h1 id="id_name">{{ cv.name }}'s CV</h1>
+        {% if user.is_authenticated %}
+            <div class="buttons">
+                <a class="btn btn-default" href="{% url 'cv_new' %}" id="id_new"><span class="glyphicon glyphicon-plus"></span></a>
+            </div>
+        {% endif %}
 
         <hr>
         <div class="location">
