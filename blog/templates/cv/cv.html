@@ -1,1 +1,41 @@
 {% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="cv">
+        <h1>{{ cv.name }}'s CV</h1>
+        
+
+        <hr>
+        <div class="location">
+            <b>Location: </b>{{ cv.location }}
+        </div>
+        <hr>
+        <div class="age">
+            <b>Age: </b>{{ cv.age }}
+        </div>
+        <hr>
+        <div class="contact">
+            <b>Contact Details: </b><br>{{ cv.contact }}
+        </div>
+        <hr>
+        <div class="profile">
+            <b>Profile: </b><br>{{ cv.profile }}
+        </div>
+        <hr>
+        <div class="experience">
+            <b>Experience: </b><br>{{ cv.experience }}
+        </div>
+        <hr>
+        <div class="qualifications">
+            <b>Qualifications: </b><br>{{ cv.qualifications }}
+        </div>
+        <hr>
+        <div class="hobbies">
+            <b>Hobbies: </b><br>{{ cv.hobbies }}
+        </div>
+        <hr>
+        <div class="references">
+            <b>References: </b><br>{{ cv.references }}
+        </div>
+    </div>
+{% endblock %}

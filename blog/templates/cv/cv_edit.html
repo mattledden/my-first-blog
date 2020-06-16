@@ -4,6 +4,6 @@
     <h2>Edit CV</h2>
     <form method="POST" class="cv-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        <button type="submit" class="save btn btn-default" id="id_submit">Save</button>
     </form>
 {% endblock %}
