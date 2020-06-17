@@ -8,7 +8,8 @@
         <h1 id="id_name">{{ cv.name }}'s CV</h1>
         {% if user.is_authenticated %}
             <div class="buttons">
-                <a class="btn btn-default" href="{% url 'cv_new' %}" id="id_new"><span class="glyphicon glyphicon-plus"></span></a>
+                <a class="btn btn-default" href="{% url 'cv_new' %}" id="id_new"><span class="glyphicon glyphicon-plus"></span></a> 
+                <a class="btn btn-default" href="{% url 'cv_edit' pk=cv.pk %}" id="id_edit"><span class="glyphicon glyphicon-pencil"></span></a>
             </div>
         {% endif %}
 
@@ -22,27 +23,27 @@
         </div>
         <hr>
         <div class="contact">
-            <b>Contact Details: </b><br>{{ cv.contact }}
+            <b>Contact Details: </b><br>{{ cv.contact|linebreaksbr }}
         </div>
         <hr>
         <div class="profile">
-            <b>Profile: </b><br>{{ cv.profile }}
+            <b>Profile: </b><br>{{ cv.profile|linebreaksbr }}
         </div>
         <hr>
         <div class="experience">
-            <b>Experience: </b><br>{{ cv.experience }}
+            <b>Experience: </b><br>{{ cv.experience|linebreaksbr }}
         </div>
         <hr>
         <div class="qualifications">
-            <b>Qualifications: </b><br>{{ cv.qualifications }}
+            <b>Qualifications: </b><br>{{ cv.qualifications|linebreaksbr }}
         </div>
         <hr>
         <div class="hobbies">
-            <b>Hobbies: </b><br>{{ cv.hobbies }}
+            <b>Hobbies: </b><br>{{ cv.hobbies|linebreaksbr }}
         </div>
         <hr>
         <div class="references">
-            <b>References: </b><br>{{ cv.references }}
+            <b>References: </b><br>{{ cv.references|linebreaksbr }}
         </div>
     </div>
 {% endblock %}

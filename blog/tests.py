@@ -13,12 +13,7 @@ class CVListTest(TestCase):
 
     def test_returns_correct_html(self):
         response = self.client.get('/')
-        print(response)
         self.assertTemplateUsed(response, 'blog/post_list.html', 'blog/base.html')
-
-    '''def test_edit_cv_returns_correct_html(self):
-        response = self.client.get('/cv/edit/')
-        self.assertTemplateUsed(response, 'cv/cv_edit.html', 'blog/base.html')'''
 
     def test_new_cv_returns_correct_html(self):
         response = self.client.get('/cv/new/')
